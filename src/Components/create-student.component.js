@@ -12,7 +12,11 @@ const CreateStudent = () => {
  
   // onSubmit handler
   const onSubmit = studentObject => {
-    axios.post('http://localhost:4000/students/create-student', studentObject)
+    const form = new FormData()
+    for(const [key, value] of Object.entries(studentObject)){
+      form.append(key, value)
+    }
+    axios.post('http://localhost:4000/students/create-student', form)
       .then(res => {
         if (res.status === 200)
           alert('Student successfully created')

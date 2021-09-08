@@ -10,7 +10,11 @@ const EditStudent = props => {
   const [formValues, setFormValues] = useState({ name: '', email: '', rollno: '' })
   //onSubmit handler
   const onSubmit = studentObject => {
-    axios.put('http://localhost:4000/students/update-student/' + props.match.params.id, studentObject)
+    const form = new FormData()
+    for(const [key, value] of Object.entries(studentObject)){
+      form.append(key, value)
+    }
+    axios.put('http://localhost:4000/students/update-student/' + props.match.params.id, form)
     .then(res => {
       if (res.status === 200){
         alert('Student successfully updated')
