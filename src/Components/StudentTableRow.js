@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const StudentTableRow = props => {
     
-    const {_id, name, email, rollno} = props.obj
+    const {_id, name, email, rollno, gender, course, file} = props.obj
 
     const deleteStudent = () => {
         axios.delete('http://localhost:4000/students/delete-student/' + _id)
@@ -26,6 +26,13 @@ const StudentTableRow = props => {
             <td>{name}</td>
             <td>{email}</td>
             <td>{rollno}</td>
+            <td>{gender}</td>
+            <td>
+                <ul> { course.map((subject, idx)=> <li key={idx}>{subject}</li> ) } </ul>
+            </td>
+            <td>
+                { <img src={`http://localhost:4000/asset/student/${file.filename}`} height="200" width="200"/> }
+            </td>
             <td>
                 <Link className="edit-link" to={"/edit-student/" + _id}>
                     Edit

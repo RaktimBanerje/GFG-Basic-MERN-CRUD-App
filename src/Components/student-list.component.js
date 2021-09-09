@@ -35,6 +35,9 @@ const StudentList = () => {
           <th>Name</th>
           <th>Email</th>
           <th>Roll No</th>
+          <th>Gender</th>
+          <th>Course</th>
+          <th>Photo</th>
           <th>Action</th>
         </tr>
       </thead>

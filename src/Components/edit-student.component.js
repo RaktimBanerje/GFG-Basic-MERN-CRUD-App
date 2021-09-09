@@ -7,7 +7,7 @@ import StudentForm from './StudentForm';
 
 // EditStudent Component
 const EditStudent = props => {
-  const [formValues, setFormValues] = useState({ name: '', email: '', rollno: '' })
+  const [formValues, setFormValues] = useState({ name: '', email: '', rollno: '', gender: '', course: [] })
   //onSubmit handler
   const onSubmit = studentObject => {
     const form = new FormData()
@@ -30,8 +30,8 @@ const EditStudent = props => {
     ()=>{
         axios.get('http://localhost:4000/students/update-student/' + props.match.params.id)
         .then(res => {
-          const {name, email, rollno} = res.data
-          setFormValues({name, email, rollno})
+          const {name, email, rollno, gender, course} = res.data
+          setFormValues({name, email, rollno, gender, course})
         })
         .catch(err => console.log(err))           
     },

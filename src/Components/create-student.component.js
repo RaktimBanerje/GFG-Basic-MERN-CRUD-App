@@ -7,10 +7,8 @@ import StudentForm from "./StudentForm";
 
 // CreateStudent Component
 const CreateStudent = () => {
- 
-  const [formValues, setFormValues] = useState({ name: '', email: '', rollno: '' })
- 
-  // onSubmit handler
+   const [formValues, setFormValues] = useState({ name: '', email: '', rollno: '', gender: '', course: [] })
+   // onSubmit handler
   const onSubmit = studentObject => {
     const form = new FormData()
     for(const [key, value] of Object.entries(studentObject)){
